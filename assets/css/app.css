@@ -95,6 +95,7 @@ code { color: #ffd49a; }
     border: 1px solid var(--line);
 }
 .toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+button:disabled { opacity: 0.55; cursor: wait; }
 
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 .summary-card, .form-card, .auth-panel, .empty-state, .table-wrap, .version-strip {
@@ -270,6 +271,29 @@ kbd { display: inline-flex; align-items: center; justify-content: center; min-wi
 .conflict-panel { margin-top: 16px; background: color-mix(in srgb, var(--danger) 13%, var(--g-panel)); border: 1px solid color-mix(in srgb, var(--danger) 45%, var(--g-line)); border-radius: 20px; padding: 16px; }
 .conflict-panel p { margin: 7px 0; color: var(--g-muted); }
 
+.export-raster-host {
+    position: fixed;
+    left: -200000px;
+    top: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    overflow: visible;
+}
+
+.binding-graphic.export-raster-target {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.binding-graphic.export-raster-target .filter-line,
+.binding-graphic.export-raster-target .keyboard-panel {
+    display: none !important;
+}
+
 @media (max-width: 860px) {
     .category-grid {
         column-width: auto;
@@ -286,12 +310,132 @@ kbd { display: inline-flex; align-items: center; justify-content: center; min-wi
 }
 
 @media print {
-    .site-header, .binding-toolbar, .version-strip, .filter-line, .keyboard-panel { display: none !important; }
-    body { background: white; }
-    .page-shell { width: 100%; padding: 0; }
-    .binding-graphic { box-shadow: none; border-radius: 0; }
+    @page {
+        size: A3 landscape;
+        margin: 8mm;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    html,
+    body {
+        width: auto !important;
+        min-height: 0 !important;
+        background: #070b11 !important;
+        color: #eef4ff !important;
+    }
+
+    .site-header,
+    .binding-toolbar,
+    .version-strip,
+    .flash,
+    .filter-line,
+    .keyboard-panel {
+        display: none !important;
+    }
+
+    .page-shell {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .binding-graphic {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 8mm !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        background:
+            radial-gradient(circle at top left, color-mix(in srgb, var(--g-accent) 18%, transparent), transparent 28rem),
+            linear-gradient(180deg, color-mix(in srgb, var(--g-bg) 88%, #fff 3%), var(--g-bg)) !important;
+    }
+
+    .graphic-header {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        gap: 8mm !important;
+        margin-bottom: 7mm !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .graphic-header h2 {
+        font-size: 30pt !important;
+        line-height: 1 !important;
+    }
+
+    .graphic-header p {
+        margin: 0 !important;
+    }
+
+    .graphic-header dl {
+        grid-template-columns: repeat(2, minmax(30mm, 1fr)) !important;
+        min-width: 0 !important;
+    }
+
     .category-grid {
-        column-count: 3;
-        column-width: auto;
+        display: block !important;
+        column-count: 4 !important;
+        column-width: auto !important;
+        column-gap: 5mm !important;
+        column-fill: auto !important;
+    }
+
+    .category-card {
+        display: inline-block !important;
+        width: 100% !important;
+        margin: 0 0 5mm !important;
+        padding: 4mm !important;
+        border-radius: 4mm !important;
+        overflow: visible !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        -webkit-column-break-inside: avoid !important;
+    }
+
+    .category-card h3 {
+        font-size: 12pt !important;
+        margin-bottom: 3mm !important;
+    }
+
+    .binding-list {
+        gap: 1.4mm !important;
+    }
+
+    .binding-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 46%) !important;
+        gap: 2mm !important;
+        padding: 1.7mm 0 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .binding-label {
+        font-size: 8.5pt !important;
+        line-height: 1.15 !important;
+    }
+
+    .binding-keys {
+        gap: 1mm !important;
+        overflow: visible !important;
+    }
+
+    kbd {
+        padding: 1mm 1.8mm !important;
+        font-size: 6.7pt !important;
+        line-height: 1.15 !important;
+    }
+
+    .conflict-panel {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
     }
 }

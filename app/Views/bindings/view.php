@@ -18,7 +18,8 @@ $defaultTheme = Config::getString('app.default_theme', 'elite');
         <button type="button" data-theme-button="elite">Elite</button>
         <button type="button" data-theme-button="light">Light</button>
         <button type="button" data-theme-button="grey">Grey</button>
-        <button type="button" onclick="window.print()">Print</button>
+        <button type="button" data-print-binding>Print</button>
+        <button type="button" data-export-png data-export-scale="2">Export PNG</button>
         <a class="button ghost" href="index.php?page=download&version=<?= (int)$binding['version_id'] ?>">Download XML</a>
     </div>
 </section>
