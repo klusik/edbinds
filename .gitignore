@@ -33,3 +33,7 @@ Thumbs.db
 # PHP dependency folders, when added later
 /vendor/
 composer.lock
+
+# Deployment artifacts
+/deploy/*
+!/deploy/.gitkeep
