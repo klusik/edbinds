@@ -1,0 +1,7 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>
+
+RedirectMatch 403 ^/(app|config|database|docs|storage|tests|tools)(/|$)

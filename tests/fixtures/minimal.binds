@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root PresetName="Minimal" MajorVersion="4" MinorVersion="2">
+    <KeyboardLayout>en-US</KeyboardLayout>
+    <YawLeftButton>
+        <Primary Device="Keyboard" Key="Key_Q" />
+        <Secondary Device="{NoDevice}" Key="" />
+    </YawLeftButton>
+    <UseBoostJuice>
+        <Primary Device="Keyboard" Key="Key_Tab" />
+    </UseBoostJuice>
+    <SetSpeed100>
+        <Primary Device="Keyboard" Key="Key_W">
+            <Modifier Device="Keyboard" Key="Key_LeftControl" />
+        </Primary>
+    </SetSpeed100>
+</Root>

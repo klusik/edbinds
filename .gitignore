@@ -1,0 +1,35 @@
+# Local configuration
+/config/config.php
+/config/*.local.php
+
+# Runtime data
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+/storage/cache/*
+!/storage/cache/.gitkeep
+/data/*
+!/data/.gitkeep
+
+# Uploaded or exported binding files
+*.binds
+*.xml
+!/tests/fixtures/*.binds
+
+# Generated exports and archives
+*.json
+*.zip
+
+# Local database dumps
+*.sql.gz
+*.sql.zip
+*.dump
+
+# OS and IDE noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# PHP dependency folders, when added later
+/vendor/
+composer.lock
